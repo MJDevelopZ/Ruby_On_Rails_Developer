@@ -54,7 +54,8 @@ get '/' do #refers to the homepage
 end
 
 post '/' do
-  birth_path_num = get_birth_path_num(params[:birthdate])
+  birthdate = params[:birthdate].gsub("-", "")#remove hyphens before calculating the numerology if they in exit in the params.
+  birth_path_num = get_birth_path_num(birthdate)
   redirect "/messages/#{birth_path_num}"
 end
 
