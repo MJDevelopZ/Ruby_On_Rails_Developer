@@ -54,7 +54,8 @@ get '/' do #refers to the homepage
 end
 
 post '/' do
-  setup_index_view
+  birth_path_num = get_birth_path_num(params[:birthdate])
+  redirect "/messages/#{birth_path_num}"
 end
 
 get '/:birthdate' do
@@ -65,6 +66,13 @@ end
 def setup_index_view
   birthdate = params[:birthdate]
   birth_path_num = get_birth_path_num(birthdate)
+  @message = get_message(birth_path_num)
+  erb :messages
+end
+
+#Add the route to let the user enter a birth_path_num and get the corresponding message
+get '/messages/:birth_path_num' do 
+  birth_path_num = params[:birth_path_num].to_i #convert to integer as it will be a string when entered
   @message = get_message(birth_path_num)
   erb :messages
 end
