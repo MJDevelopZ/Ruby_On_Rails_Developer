@@ -40,13 +40,6 @@ def get_message(birth_path_num)
   end
 end
 
-get '/:birthdate' do
-	birthdate = params[:birthdate]
-	birth_path_num = get_birth_path_num(birthdate)
-	@message = get_message(birth_path_num)
-	erb :messages
-end
-
 def thankyou
 	@thankyou = "Thank you for using this app."
 	erb :thankyou
@@ -54,4 +47,11 @@ end
 
 get '/thankyou' do 
 	thankyou
+end
+
+get '/:birthdate' do
+	birthdate = params[:birthdate]
+	birth_path_num = get_birth_path_num(birthdate)
+	@message = get_message(birth_path_num)
+	erb :messages
 end
