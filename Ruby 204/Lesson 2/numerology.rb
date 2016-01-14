@@ -40,10 +40,22 @@ def get_message(birth_path_num)
   end
 end
 
+#Thank you message for using the app to be displayed on the newpage.erb
+def thankyou
+	thankyou = "Thank you for using this app."
+	return thank you 
+end
+
 get '/:birthdate' do
 	birthdate = params[:birthdate]
 	birth_path_num = get_birth_path_num(birthdate)
 	@message = get_message(birth_path_num)
 	erb :messages
+end
+
+get '/thankyou' do 
+	#contents of your new page
+	@thankyou = thankyou
+	erb :newpage
 end
 
