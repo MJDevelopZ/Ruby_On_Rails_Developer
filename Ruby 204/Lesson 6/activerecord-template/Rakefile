@@ -12,8 +12,8 @@ namespace :db do
   desc "Create #{APP_NAME} databases"
   task "create" do
     puts "Creating #{APP_NAME} development and test databases if they don't exist..."
-    system("createdb #{DB_NAME} --username=#{DB_USERNAME}  && createdb #{TEST_DB_NAME} --username=#{DB_USERNAME} ")
-    #Suggested error correction form StackOverflow: http://stackoverflow.com/questions/30767865/createdb-too-many-command-line-arguments/30768955#30768955
+    puts "createdb #{DB_NAME} --username=#{DB_USERNAME}  && createdb #{TEST_DB_NAME} --username=#{DB_USERNAME} "
+    system("createdb --username=#{DB_USERNAME} #{DB_NAME} && createdb  --username=#{DB_USERNAME} #{TEST_DB_NAME}")
   end
 
   desc "Drop #{APP_NAME} databases"
