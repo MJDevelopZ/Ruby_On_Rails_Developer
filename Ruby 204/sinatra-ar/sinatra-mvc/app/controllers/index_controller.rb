@@ -60,7 +60,7 @@ post '/' do
     birth_path_num = get_birth_path_num(birthdate)
     redirect "/messages/#{birth_path_num}"
   else
-    @error = "You should enter a valid birthdate in the form of mmddyyyy."
+    @error = "Please enter the date as MMDDYYYY."
     erb :form
   end
 end
